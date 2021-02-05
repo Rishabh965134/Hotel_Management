@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+  <Ad>
+    <ImageUrl>~/images/engagement.jpg</ImageUrl>
+    <AlternateText>Event (Glenn Manor)</AlternateText>
+  </Ad>
+  <Ad>
+    <ImageUrl>~/images/mainFrame.jpg</ImageUrl>
+    <AlternateText>Event (Glenn Manor)</AlternateText>
+  </Ad>
+  <Ad>
+    <ImageUrl>~/images/marriage.jpg</ImageUrl>
+    <AlternateText>Event (Glenn Manor)</AlternateText>
+  </Ad>
+  <Ad>
+    <ImageUrl>~/images/premarriage.jpg</ImageUrl>
+    <AlternateText>Event (Glenn Manor)</AlternateText>
+  </Ad>
+
+</Advertisements>
