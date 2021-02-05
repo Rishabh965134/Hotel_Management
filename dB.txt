@@ -1,0 +1,138 @@
+create database hotel_manage
+
+use hotel_manage
+
+create table user_subsr
+(email varchar(70))
+
+create table user_room
+(name varchar(40),dob date,date_of_birth varchar(20), gender varchar(10), email varchar(50), address varchar(20),state varchar(30), no_of_adult varchar(10),
+no_of_children varchar(10),room_type varchar(10), room_floor varchar(10), entry_date date, checkIn_time varchar(10),dept_date date,
+checkOut_time varchar(10), total_bill varchar(100))
+
+select *from user_room
+
+create table user_query
+(email varchar(70), issue varchar(5000))
+
+create table user_orders
+(id int,name varchar(50), mobile varchar(30), email varchar(30),address varchar(100),receipt_no varchar(10), receipt_date varchar(30),
+room_type varchar(20),room_guest varchar(10),food_type varchar(30), food_item varchar(50),total_bill varchar(30) )
+
+create table user_menu
+(id int,itemname varchar(100), itemprice money)
+
+create table user_event  
+(name varchar(100), mobile varchar(20),event varchar(100), start_date varchar(40), end_date varchar(120),start_time varchar(30),
+end_time varchar(30),no_of_guest varchar(100), total_bill varchar(300)) 
+
+create table user_cred
+(id int primary key identity(100,1),gender varchar(10),name varchar(40), mobile varchar(20),address varchar(100),email varchar(40),password varchar(50))
+
+create table feedback
+(name varchar(40),email varchar(50),address varchar(50), foodQ varchar(30), roomQ varchar(30),overallservice varchar(30), clean varchar(30)
+, orderq varchar(30),overallEx varchar(30),comment varchar(300))
+
+create table admin_room
+(roomtype varchar(100), roomprice varchar(200))
+
+create table admin_menu
+(itemtype nchar(50), itemname nchar(50), itemprice int)
+
+create table admin_event
+(event_name varchar(100),event_price varchar(1000))
+
+create table admin_cred
+(email varchar(100), password varchar(100))
+
+insert into admin_cred values('rj@gmail.com','123456')
+select *from admin_cred
+
+
+create procedure admin_menu_items  
+(  
+   @itemtype nchar(50),  
+   @itemname nchar(50),  
+   @itemprice int,
+   @StatementType nvarchar(50)=''
+)  
+AS  
+BEGIN  
+
+IF @StatementType = 'sp_insert'  
+BEGIN  
+insert into admin_menu(itemtype, itemname , itemprice) values(@itemtype, @itemname , @itemprice)  
+END  
+
+IF @StatementType = 'sp_update'  
+BEGIN  
+UPDATE admin_menu SET  
+itemtype =@itemtype, itemname=@itemname , itemprice=@itemprice  
+WHERE itemname = @itemname  
+END  
+
+if @StatementType = 'sp_delete'  
+begin
+Delete from admin_menu  
+where  
+itemname = @itemname 
+End  
+end 
+
+create procedure admin_room_type 
+(  
+   @roomtype varchar(50),  
+   @roomprice varchar(200),  
+   @StatementType nvarchar(50)=''
+)  
+AS  
+BEGIN  
+
+IF @StatementType = 'sp_insert'  
+BEGIN  
+insert into admin_room(roomtype, roomprice) values(@roomtype, @roomprice)  
+END  
+
+IF @StatementType = 'sp_update'  
+BEGIN  
+UPDATE admin_room SET  
+roomtype =@roomtype, roomprice=@roomprice  
+WHERE roomtype = @roomtype  
+END  
+
+if @StatementType = 'sp_delete'  
+begin
+Delete from admin_room  
+where  
+roomtype = @roomtype 
+End  
+end 
+
+create procedure admin_event_type 
+(  
+   @event_name varchar(100),  
+   @event_price varchar(1000),  
+   @StatementType nvarchar(50)=''
+)  
+AS  
+BEGIN  
+
+IF @StatementType = 'sp_insert'  
+BEGIN  
+insert into admin_event(event_name, event_price) values(@event_name, @event_price)  
+END  
+
+IF @StatementType = 'sp_update'  
+BEGIN  
+UPDATE admin_event SET  
+@event_name =@event_name, event_price=@event_price  
+WHERE event_name = @event_name  
+END  
+
+if @StatementType = 'sp_delete'  
+begin
+Delete from admin_event  
+where  
+event_name = @event_name 
+End  
+end 
